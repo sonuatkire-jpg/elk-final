@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.3
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.watcher.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    networks:
+      - elk
+
+  logstash:
+    build: ./logstash
+    volumes:
+      - ./logstash:/usr/share/logstash/config
+      - ./config:/usr/share/logstash/pipeline
+    environment:
+      - "XPACK_MANAGEMENT_ENABLED=true"
+      - "XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS=https://my-deployment-1cb05e.es.ap-south-1.aws.elastic-cloud.com:443"
+      - "XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME=logstash"
+      - "XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD=logstash"
+      - "XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL=5s"
+      - "XPACK_MANAGEMENT_PIPELINE_ID=bank_pipeline"
+      - "XPACK_MONITORING_ELASTICSEARCH_HOSTS=https://my-deployment-1cb05e.es.ap-south-1.aws.elastic-cloud.com:443"
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
+
+  postgres:
+    build: ./postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=bankdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    networks:
+      - elk
+
+networks:
+  elk:
+    driver: bridge

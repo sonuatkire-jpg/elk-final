@@ -1,0 +1,7 @@
+xpack.management.elasticsearch.hosts: ${XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS}
+xpack.management.elasticsearch.password: ${XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD}
+xpack.management.elasticsearch.username: ${XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME}
+xpack.management.enabled: ${XPACK_MANAGEMENT_ENABLED}
+xpack.management.logstash.poll_interval: ${XPACK_MANAGEMENT_LOGSTASH_POLL_INTERVAL}
+xpack.management.pipeline.id: ${XPACK_MANAGEMENT_PIPELINE_ID}
+xpack.monitoring.elasticsearch.hosts: ${XPACK_MONITORING_ELASTICSEARCH_HOSTS}
