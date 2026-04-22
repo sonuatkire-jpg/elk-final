@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo "GitHub Webhook Setup Instructions:"
+echo "1. Go to https://github.com/settings/tokens"
+echo "2. Click 'Generate new token'"
+echo "3. Select scopes: repo, admin:repo_hook"
+echo "4. Generate token and copy it"
+echo "5. In Jenkins, go to Manage Jenkins > Manage Credentials"
+echo "6. Add credentials with type 'Secret text'"
+echo "7. ID: github-token, Description: GitHub Personal Access Token"
+echo "8. Paste the token and save"
+
+echo ""
+echo "Webhook Configuration:"
+echo "1. In your GitHub repository, go to Settings > Webhooks"
+echo "2. Click 'Add webhook'"
+echo "3. Payload URL: http://localhost:8080/github-webhook/"
+echo "4. Content type: application/json"
+echo "5. Secret: (leave empty)"
+echo "6. SSL verification: Disable"
+echo "7. Events: Select 'Just the push event.'"
+echo "8. Active: Check the box"
+echo "9. Add webhook"
+
+echo ""
+echo "Once webhook is configured, start Jenkins:"
+echo "docker-compose -f docker-compose-jenkins.yml up -d"
