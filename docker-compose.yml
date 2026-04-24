@@ -26,7 +26,7 @@ services:
     environment:
       - "FLEET_ENROLL=1"
       - "FLEET_URL=https://1cb05e3645c445fbb2d4524592d4071b.fleet.ap-south-1.aws.elastic-cloud.com:443"
-      - "FLEET_ENROLLMENT_TOKEN=${LOGSTASH_FLEET_TOKEN}"
+      - "FLEET_ENROLLMENT_TOKEN=NkctR3Y1MEJnbVl2NHhGYVU0T3E6dTd3SGZWOWlTZFh1UVZ3MUdRanpyQQ=="
       - "FLEET_INSECURE=false"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
