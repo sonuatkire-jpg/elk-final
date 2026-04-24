@@ -5,7 +5,7 @@ services:
     build: ./logstash
     volumes:
       - ./logstash:/usr/share/logstash/config
-      - ./config:/usr/share/logstash/pipeline
+      - ./pipelines:/usr/share/logstash/pipeline
     environment:
       - "XPACK_MANAGEMENT_ENABLED=true"
       - "XPACK_MANAGEMENT_ELASTICSEARCH_HOSTS=https://my-deployment-1cb05e.es.ap-south-1.aws.elastic-cloud.com:443"
