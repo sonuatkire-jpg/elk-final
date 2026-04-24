@@ -1,4 +1,4 @@
-CREATE TABLE clients (
+CREATE TABLE bank_clients (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     account_number VARCHAR(50) UNIQUE NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE clients (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO clients (name, account_number, balance) VALUES
+INSERT INTO bank_clients (name, account_number, balance) VALUES
 ('John Doe', 'ACC001', 5000.00),
 ('Jane Smith', 'ACC002', 7500.50),
 ('Michael Johnson', 'ACC003', 12000.75),
