@@ -1,18 +1,6 @@
 version: '3.8'
 
 services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.3
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-      - xpack.watcher.enabled=false
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ports:
-      - "9200:9200"
-    networks:
-      - elk
-
   logstash:
     build: ./logstash
     volumes:
@@ -29,8 +17,6 @@ services:
     ports:
       - "5044:5044"
       - "9600:9600"
-    depends_on:
-      - elasticsearch
     networks:
       - elk
 
