@@ -21,4 +21,4 @@ volumes:
 networks:
   elk:
     external: true
-    name: elk_elk
+    name: elk-post_elk
